@@ -68,7 +68,7 @@ function keydown(fn: (event: KeyboardEvent) => void): (event: KeyboardEvent) => 
   }
 }
 
-type Style = {
+export type Style = {
   prefix?: string
   suffix?: string
   trimFirst?: boolean
@@ -85,16 +85,11 @@ type Style = {
 
 const styles = new WeakMap<Element, Style>()
 
-class MarkdownButtonElement extends HTMLElement {
+export class MarkdownButtonElement extends HTMLElement {
   constructor() {
     super()
-    const apply = () => {
-      const style = styles.get(this)
-      if (!style) return
-      applyStyle(this, style)
-    }
-    this.addEventListener('keydown', keydown(apply))
-    this.addEventListener('click', apply)
+    this.addEventListener('keydown', keydown(this.click))
+    this.addEventListener('click', this.click)
   }
 
   connectedCallback() {
@@ -103,8 +98,12 @@ class MarkdownButtonElement extends HTMLElement {
     }
   }
 
-  click() {
-    const style = styles.get(this)
+  get styles() {
+    return styles.get(this)
+  }
+
+  click = () => {
+    const style = this.styles
     if (!style) return
     applyStyle(this, style)
   }
@@ -373,7 +372,7 @@ function wordSelectionEnd(text: string, i: number, multiline: boolean): number {
 
 let canInsertText: boolean | null = null
 
-function insertText(textarea: HTMLTextAreaElement, {text, selectionStart, selectionEnd}: SelectionRange) {
+export function insertText(textarea: HTMLTextAreaElement, {text, selectionStart, selectionEnd}: SelectionRange) {
   const originalSelectionStart = textarea.selectionStart
   const before = textarea.value.slice(0, originalSelectionStart)
   const after = textarea.value.slice(textarea.selectionEnd)
@@ -429,7 +428,7 @@ function styleSelectedText(textarea: HTMLTextAreaElement, styleArgs: StyleArgs) 
   insertText(textarea, result)
 }
 
-function expandSelectionToLine(textarea: HTMLTextAreaElement) {
+export function expandSelectionToLine(textarea: HTMLTextAreaElement) {
   const lines = textarea.value.split('\n')
   let counter = 0
   for (let index = 0; index < lines.length; index++) {
@@ -444,7 +443,7 @@ function expandSelectionToLine(textarea: HTMLTextAreaElement) {
   }
 }
 
-function expandSelectedText(
+export function expandSelectedText(
   textarea: HTMLTextAreaElement,
   prefixToUse: string,
   suffixToUse: string,
