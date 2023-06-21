@@ -1,8 +1,8 @@
 {
-  "name": "@github/markdown-toolbar-element",
+  "name": "@themarshallproject/markdown-toolbar-element",
   "version": "2.1.0",
   "description": "Markdown formatting buttons for text inputs.",
-  "repository": "github/markdown-toolbar-element",
+  "repository": "themarshallproject/markdown-toolbar-element",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -15,7 +15,7 @@
     "pretest": "npm run build",
     "test": "karma start test/karma.config.cjs",
     "prepublishOnly": "npm run build",
-    "postpublish": "npm publish --ignore-scripts --@github:registry='https://npm.pkg.github.com'"
+    "postpublish": "npm publish --ignore-scripts --@themarshallproject:registry='https://npm.pkg.github.com'"
   },
   "keywords": [
     "custom-element",
