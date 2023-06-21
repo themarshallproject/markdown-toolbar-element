@@ -86,23 +86,19 @@ export type Style = {
 const styles = new WeakMap<Element, Style>()
 
 export class MarkdownButtonElement extends HTMLElement {
-  constructor() {
-    super()
-    this.addEventListener('keydown', keydown(this.click))
-    this.addEventListener('click', this.click)
-  }
-
   connectedCallback() {
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'button')
     }
+    this.addEventListener('keydown', keydown(this.click.bind(this)))
+    this.addEventListener('click', this.click.bind(this))
   }
 
   get styles() {
     return styles.get(this)
   }
 
-  click = () => {
+  click() {
     const style = this.styles
     if (!style) return
     applyStyle(this, style)
