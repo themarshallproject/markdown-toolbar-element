@@ -109,6 +109,7 @@ class MarkdownHeaderButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     const level = parseInt(this.getAttribute('level') || '3', 10)
     this.#setLevelStyle(level)
+    super.connectedCallback()
   }
 
   static get observedAttributes() {
@@ -141,6 +142,7 @@ if (!window.customElements.get('md-header')) {
 class MarkdownBoldButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '**', suffix: '**', trimFirst: true})
+    super.connectedCallback()
   }
 }
 
@@ -152,6 +154,7 @@ if (!window.customElements.get('md-bold')) {
 class MarkdownItalicButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '_', suffix: '_', trimFirst: true})
+    super.connectedCallback()
   }
 }
 
@@ -163,6 +166,7 @@ if (!window.customElements.get('md-italic')) {
 class MarkdownQuoteButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '> ', multiline: true, surroundWithNewlines: true})
+    super.connectedCallback()
   }
 }
 
@@ -174,6 +178,7 @@ if (!window.customElements.get('md-quote')) {
 class MarkdownCodeButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '`', suffix: '`', blockPrefix: '```', blockSuffix: '```'})
+    super.connectedCallback()
   }
 }
 
@@ -185,6 +190,7 @@ if (!window.customElements.get('md-code')) {
 class MarkdownLinkButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '[', suffix: '](url)', replaceNext: 'url', scanFor: 'https?://'})
+    super.connectedCallback()
   }
 }
 
@@ -196,6 +202,7 @@ if (!window.customElements.get('md-link')) {
 class MarkdownImageButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '![', suffix: '](url)', replaceNext: 'url', scanFor: 'https?://'})
+    super.connectedCallback()
   }
 }
 
@@ -207,6 +214,7 @@ if (!window.customElements.get('md-image')) {
 class MarkdownUnorderedListButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '- ', multiline: true, unorderedList: true})
+    super.connectedCallback()
   }
 }
 
@@ -218,6 +226,7 @@ if (!window.customElements.get('md-unordered-list')) {
 class MarkdownOrderedListButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '1. ', multiline: true, orderedList: true})
+    super.connectedCallback()
   }
 }
 
@@ -229,6 +238,7 @@ if (!window.customElements.get('md-ordered-list')) {
 class MarkdownTaskListButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '- [ ] ', multiline: true, surroundWithNewlines: true})
+    super.connectedCallback()
   }
 }
 
@@ -240,6 +250,7 @@ if (!window.customElements.get('md-task-list')) {
 class MarkdownMentionButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '@', prefixSpace: true})
+    super.connectedCallback()
   }
 }
 
@@ -251,6 +262,7 @@ if (!window.customElements.get('md-mention')) {
 class MarkdownRefButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '#', prefixSpace: true})
+    super.connectedCallback()
   }
 }
 
@@ -262,6 +274,7 @@ if (!window.customElements.get('md-ref')) {
 class MarkdownStrikethroughButtonElement extends MarkdownButtonElement {
   connectedCallback() {
     styles.set(this, {prefix: '~~', suffix: '~~', trimFirst: true})
+    super.connectedCallback()
   }
 }
 
