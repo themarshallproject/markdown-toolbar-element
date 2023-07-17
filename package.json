@@ -1,6 +1,6 @@
 {
   "name": "@themarshallproject/markdown-toolbar-element",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Markdown formatting buttons for text inputs.",
   "repository": "themarshallproject/markdown-toolbar-element",
   "type": "module",
